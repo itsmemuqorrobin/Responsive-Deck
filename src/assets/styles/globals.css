@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+  padding: 0;
+  margin: 0;
+}
+
+@theme {
+  --color-primary: #fd853a;
+  --color-secondary: #171717;
+  --color-tertiary: #1d2939;
+  --color-tertiary-2: #344054;
+  --color-tertiary-3: #272727;
+
+  --color-grey-primary: #98a2b3;
+  --color-grey-secondary: #f2f4f7;
+
+  --font-roboto_mono: "Roboto Mono", monospace;
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-pt-sans: "PT Sans", sans-serif;
+}
+
+body {
+  font-family: var(--font-inter);
+}
