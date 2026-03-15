@@ -11,6 +11,7 @@ export default defineConfig({
       "Frontend Responsive Tools for Security Paranoid and Prominent User Experience",
     permissions: ["activeTab", "tabs", "declarativeNetRequest"],
     action: {},
+    host_permissions: ["http://*/*", "https://*/*"],
   },
   vite: () => ({
     plugins: [tailwindcss()],
