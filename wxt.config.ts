@@ -9,7 +9,7 @@ export default defineConfig({
     name: "Responsive Deck",
     description:
       "Frontend Responsive Tools for Security Paranoid and Prominent User Experience",
-    permissions: ["activeTab", "tabs"],
+    permissions: ["activeTab", "tabs", "declarativeNetRequest"],
     action: {},
   },
   vite: () => ({
