@@ -42,7 +42,7 @@ export default function ResponsiveDeck() {
             step="0.1"
             value={zoom}
             onChange={(e) => setZoom(parseFloat(e.target.value))}
-            className="w-24 accent-blue-600"
+            className="w-24 accent-primary cursor-pointer"
           />
           <span className="text-sm text-gray-700 w-8 text-right font-mono">
             {Math.round(zoom * 100)}%
