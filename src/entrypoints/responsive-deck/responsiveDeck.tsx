@@ -1,5 +1,6 @@
 import { Input } from "@/components/Input";
 import { useGetResponsiveDeckState } from "@/hooks/global/globalState";
+import { Globe } from "lucide-react";
 
 const DEVICES = [
   { id: "mobile", name: "iPhone 6/7/8", width: 375, height: 667 },
@@ -90,25 +91,49 @@ export default function ResponsiveDeck() {
             </div>
           </section>
         ) : (
-          <section className="flex-1 flex items-center justify-center">
-            <div className="text-center text-gray-400">
-              <svg
-                className="mx-auto h-12 w-12 mb-3 opacity-20"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                />
-              </svg>
-              <p className="text-lg font-medium">
-                Enter a URL to preview responsive layouts
+          <section className=" mt-12">
+            <div className="text-center  text-gray-400">
+              <Globe style={{ margin: "0 auto" }} />
+
+              <p className="text-lg font-medium mt-1">
+                Enter a URL to preview responsive layouts <br /> (e.g.
+                example.com or localhost:3000)
               </p>
             </div>
+
+            <section className="flex-1 overflow-x-auto overflow-y-auto custom-scrollbar p-8">
+              <div className="flex flex-row items-start justify-start gap-6 min-w-max h-full">
+                {DEVICES.map((device) => {
+                  const scaledWidth = device.width * zoom;
+                  const scaledHeight = device.height * zoom;
+
+                  return (
+                    <div key={device.id} className="flex flex-col gap-3">
+                      <div className="flex items-center gap-2 px-1">
+                        <span className="text-gray-700 font-medium text-base">
+                          {device.name}
+                        </span>
+                        <span className="text-gray-400 font-mono text-sm">
+                          {device.width}x{device.height}
+                        </span>
+                      </div>
+
+                      <div
+                        className="relative bg-transparent border-[3px] border-gray-400 border-dashed shadow-xl rounded-md overflow-hidden ring-1 ring-gray-200 flex items-center justify-center"
+                        style={{
+                          width: `${scaledWidth}px`,
+                          height: `${scaledHeight}px`,
+                        }}
+                      >
+                        <p className="text-gray-400 text-sm italic">
+                          Your preview will appear here
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
           </section>
         )}
 
