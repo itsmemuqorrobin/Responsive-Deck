@@ -1,13 +1,12 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-
-import ResponsiveDeck from "@/assets/responsiveDeck.svg";
 import { Loader } from "lucide-react";
 import {
   getRegisteredOptionsPath,
   isSameExtensionPage,
 } from "@/utils/urlMatch";
+import { EXTENSION_NAME } from "@/utils/const";
 
 function PopupPage() {
   const [currentTabUrl, setCurrentTabUrl] = useState("");
@@ -129,16 +128,16 @@ function PopupPage() {
           <div className={""}>
             {isOnOptionsPage && (
               <div>
-                <h1 className="text-xl mb-2 "> Responsive Deck </h1>
+                <h1 className="text-xl mb-2 "> {EXTENSION_NAME} </h1>
                 <p>You are on the main page</p>
               </div>
             )}
 
             {hasDashboardTab && !isOnOptionsPage && (
               <div>
-                <h1 className="text-xl mb-2 "> Responsive Deck Available </h1>
+                <h1 className="text-xl mb-2 "> {EXTENSION_NAME} Available </h1>
                 <p className="text-sm text-black text-center ">
-                  You already have the Responsive Deck opened in another tab
+                  You already have the {EXTENSION_NAME} opened in another tab
                 </p>
               </div>
             )}
