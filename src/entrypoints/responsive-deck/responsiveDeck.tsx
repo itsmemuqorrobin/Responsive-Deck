@@ -5,6 +5,7 @@ import {
 } from "@/components/base/ui/Tooltip";
 import { Input } from "@/components/Input";
 import { useGetResponsiveDeckState } from "@/hooks/global/globalState";
+import { EXTENSION_MESSAGES } from "@/utils/const";
 import { Cable, Globe, Unplug } from "lucide-react";
 
 const DEVICES = [
@@ -23,6 +24,32 @@ export default function ResponsiveDeck() {
   const handleToggleSync = () => {
     setToggleScrollSync((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (!toggleScrollSync) return;
+
+    const handleMessage = (e: MessageEvent) => {
+      if (e.data?.type === EXTENSION_MESSAGES.DECK_SCROLL) {
+        const all_iframes = document.querySelectorAll("iframe");
+
+        all_iframes.forEach((iframe) => {
+          if (iframe.name !== e.data?.source && iframe.contentWindow) {
+            iframe.contentWindow.postMessage(
+              {
+                type: `${EXTENSION_MESSAGES.DECK_SET_SCROLL}`,
+                percent: e.data.percent,
+              },
+              "*",
+            );
+          }
+        });
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+
+    return () => window.removeEventListener("message", handleMessage);
+  }, [toggleScrollSync]);
 
   return (
     <main className="bg-bg-primary  min-h-screen py-3 px-4">
@@ -115,6 +142,7 @@ export default function ResponsiveDeck() {
                       <iframe
                         src={url}
                         title={device.name}
+                        name={device.id}
                         style={{
                           width: `${device.width}px`,
                           height: `${device.height}px`,
