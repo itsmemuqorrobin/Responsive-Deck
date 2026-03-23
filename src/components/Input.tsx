@@ -26,6 +26,7 @@ export function Input() {
     (state) => state.updateIsUrlValid,
   );
   const updateUrl = useGetResponsiveDeckState((state) => state.updateUrl);
+  const inputValue = useGetResponsiveDeckState((state) => state.url);
 
   const {
     register,
@@ -48,6 +49,7 @@ export function Input() {
         className={`w-full py-1 px-4 font-pt-sans text-black bg-white text-base outline-none rounded-3xl focus:ring-2 focus:ring-primary transition-colors duration-200`}
         placeholder="place your url here"
         {...register("url")}
+        value={inputValue}
       />
 
       {errors.url && (
