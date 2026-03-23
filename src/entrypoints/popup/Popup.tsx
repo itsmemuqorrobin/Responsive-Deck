@@ -6,7 +6,7 @@ import {
   getRegisteredOptionsPath,
   isSameExtensionPage,
 } from "@/utils/urlMatch";
-import { EXTENSION_NAME } from "@/utils/const";
+import { EXTENSION_NAME, EXTENSION_VARIABLES } from "@/utils/const";
 
 function PopupPage() {
   const [currentTabUrl, setCurrentTabUrl] = useState("");
@@ -116,6 +116,37 @@ function PopupPage() {
     }
   };
 
+  const goWithCurrentUrl = async () => {
+    if (!currentTabUrl || isOnOptionsPage) return;
+
+    await browser.storage.local.set({
+      [`${EXTENSION_VARIABLES.STORAGE_KEY}`]: currentTabUrl,
+    });
+
+    const tabs = await browser.tabs.query({});
+    const existingTab = tabs.find((tab) => {
+      const url = tab.url ?? "";
+      return isSameExtensionPage(url, optionsUrl);
+    });
+
+    if (!existingTab) {
+      const newTab = await browser.tabs.create({
+        url: optionsUrl,
+        active: true,
+      });
+      if (newTab.windowId != null)
+        browser.windows.update(newTab.windowId, { focused: true });
+    } else {
+      await browser.tabs.update(existingTab.id, {
+        active: true,
+        url: optionsUrl,
+      });
+
+      if (existingTab.windowId != null)
+        browser.windows.update(existingTab.windowId, { focused: true });
+    }
+  };
+
   return (
     <section className="px-8 py-6  min-w-80 max-w-90 mx-auto">
       <div className="text-center">
@@ -177,6 +208,7 @@ function PopupPage() {
               <button
                 className="py-2 px-4 bg-tertiary text-white font-poppins text-sm cursor-pointer rounded-md
           "
+                onClick={goWithCurrentUrl}
               >
                 Go with current URL
               </button>

@@ -5,7 +5,7 @@ import {
 } from "@/components/base/ui/Tooltip";
 import { Input } from "@/components/Input";
 import { useGetResponsiveDeckState } from "@/hooks/global/globalState";
-import { EXTENSION_MESSAGES } from "@/utils/const";
+import { EXTENSION_MESSAGES, EXTENSION_VARIABLES } from "@/utils/const";
 import { Cable, Globe, Unplug } from "lucide-react";
 
 const DEVICES = [
@@ -16,7 +16,8 @@ const DEVICES = [
 ];
 
 export default function ResponsiveDeck() {
-  const { url, isUrlValid } = useGetResponsiveDeckState();
+  const { url, isUrlValid, updateIsUrlValid, updateUrl } =
+    useGetResponsiveDeckState();
 
   const [zoom, setZoom] = useState(0.6);
   const [toggleScrollSync, setToggleScrollSync] = useState(false);
@@ -50,6 +51,17 @@ export default function ResponsiveDeck() {
 
     return () => window.removeEventListener("message", handleMessage);
   }, [toggleScrollSync]);
+
+  useEffect(() => {
+    browser.storage.local
+      .get(EXTENSION_VARIABLES.STORAGE_KEY)
+      .then((result) => {
+        if (result[EXTENSION_VARIABLES.STORAGE_KEY]) {
+          updateUrl(result[EXTENSION_VARIABLES.STORAGE_KEY] as string);
+          updateIsUrlValid(true);
+        }
+      });
+  }, [updateUrl, updateIsUrlValid]);
 
   return (
     <main className="bg-bg-primary  min-h-screen py-3 px-4">
