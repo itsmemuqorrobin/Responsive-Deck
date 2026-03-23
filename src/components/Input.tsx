@@ -32,15 +32,28 @@ export function Input() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: zodResolver(formSchema),
     mode: "onSubmit",
     reValidateMode: "onChange",
+    defaultValues: {
+      url: inputValue || "",
+    },
   });
 
-  const onSubmit = handleSubmit((data: FormSchema) => {
+  useEffect(() => {
+    reset({ url: inputValue || "" });
+  }, [inputValue, reset]);
+
+  const onSubmit = handleSubmit(async (data: FormSchema) => {
     updateIsUrlValid(true);
     updateUrl(data.url);
+
+    // Set to browser extension's storage
+    await browser.storage.local.set({
+      [`${EXTENSION_VARIABLES.STORAGE_KEY}`]: data.url,
+    });
   });
 
   return (
@@ -49,7 +62,6 @@ export function Input() {
         className={`w-full py-1 px-4 font-pt-sans text-black bg-white text-base outline-none rounded-3xl focus:ring-2 focus:ring-primary transition-colors duration-200`}
         placeholder="place your url here"
         {...register("url")}
-        value={inputValue}
       />
 
       {errors.url && (
