@@ -10,7 +10,7 @@ export default defineConfig({
     name: `${EXTENSION_NAME}`,
     description:
       "Frontend Responsive Tools for Security Paranoid and Prominent User Experience",
-    permissions: ["activeTab", "tabs", "declarativeNetRequest"],
+    permissions: ["activeTab", "tabs", "declarativeNetRequest", "storage"],
     action: {},
     host_permissions: ["http://*/*", "https://*/*"],
   },
