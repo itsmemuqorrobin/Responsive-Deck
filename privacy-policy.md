@@ -22,4 +22,7 @@ The extension requests the `storage` permission strictly to function. When a use
 The extension uses the `declarativeNetRequest` API to strip `X-Frame-Options` and `Content-Security-Policy` headers. This is done **strictly locally** within your browser to allow cross-origin websites to render inside the tool's `iframes`. We do not log, monitor, or transmit any of your network traffic.
 
 **4. Contact**
-If you have any questions or concerns, please open an issue on our public GitHub repository: https://github.com/itsmemuqorrobin/Responsive-Deck or direct contact me at developer.muqorrobin@gmail.com
+
+Developer: Achmad Muqorrobin
+
+Email: `developer.muqorrobin@gmail.com`

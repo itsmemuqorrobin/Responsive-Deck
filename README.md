@@ -105,3 +105,7 @@ I am absolutely open to community help, but to respect everyone's time:
 ## 📝 License
 
 Distributed under the MIT License.
+
+## ‼️ Privacy Policy
+
+[Privacy Policy](https://itsmemuqorrobin.github.io/Responsive-Deck/privacy-policy/)
