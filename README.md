@@ -101,6 +101,8 @@ I am absolutely open to community help, but to respect everyone's time:
 - If you would like to contribute, please check the Roadmap Kanban Board to see what is currently needed.
 - Open an Issue or Discussion first with your proposal so we can align on the vision before you write any code.
 
+For more details, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ## 📝 License
 
 Distributed under the MIT License.
