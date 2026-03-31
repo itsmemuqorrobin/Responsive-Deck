@@ -6,7 +6,7 @@
 
 **A lightning-fast, browser-native developer tool for testing responsive web layouts.** Responsive Deck allows frontend engineers to preview local (e.g., `localhost:3000`) and live websites across multiple device viewports simultaneously—without the bloat of heavy Electron-based desktop apps.
 
-![Responsive Deck Demo](./public/demo.gif)
+![Responsive Deck Demo](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTBhcmJvcm05cW5vdTR2aXIxZTM3MWVpbjA4ZW9ydm1xMzE1cTJqZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QdovzOm6TwLhRt6nou/giphy.gif)
 
 ---
 
