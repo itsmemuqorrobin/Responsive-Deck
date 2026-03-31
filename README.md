@@ -91,7 +91,7 @@ Want to contribute or run the tool locally? It's incredibly easy to set up.
 
    _This will automatically launch and open a sandboxed instance of Chrome with the extension tied to it and Hot Module Replacement (HMR) enabled._
 
-<!-- ## 🤝 Curated Contributions
+## 🤝 Curated Contributions
 
 While the source code is 100% open-source for you to audit, fork, and learn from, I am currently maintaining a Curated Contribution Model to ensure the tool doesn't suffer from feature bloat.
 
@@ -99,7 +99,7 @@ I am absolutely open to community help, but to respect everyone's time:
 
 - Please do not submit unannounced Pull Requests.
 - If you would like to contribute, please check the Roadmap Kanban Board to see what is currently needed.
-- Open an Issue or Discussion first with your proposal so we can align on the vision before you write any code. -->
+- Open an Issue or Discussion first with your proposal so we can align on the vision before you write any code.
 
 ## 📝 License
 
